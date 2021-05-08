@@ -2,90 +2,99 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
       fixed
       app
     >
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+        <template
+          v-for="(page, i) in pageList"
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
+          <v-list-item
+            v-if="!page.sub || !page.sub.length"
+            :key="i"
+            :to="page.to"
+            :disabled="page.disabled"
+            router
+            exact
+          >
+            <v-list-item-action>
+              <v-icon>{{ page.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="page.title" />
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-group
+            v-else
+            :key="i"
+            :prepend-icon="page.icon"
+          >
+            <template #activator>
+              <v-list-item
+                :disabled="page.disabled"
+                router
+                exact
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="page.title" />
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+            <v-list-item
+              v-for="(innerpage, i) in page.sub"
+              :key="i"
+              :to="innerpage.to"
+              :disabled="innerpage.disabled"
+              router
+              exact
+            >
+              <v-list-item-action>
+                <v-icon>{{ innerpage.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="innerpage.title" />
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+        </template>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
-        <nuxt />
+        <nuxt ref="page" />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :absolute="!fixed" app>
+    <v-footer absolute app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span class="ml-auto">Gamification Startup-Methoden Team :)</span>
     </v-footer>
   </v-app>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
-        },
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
-    }
-  },
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import { Page, pages } from '~/const/pages.const'
+
+@Component({})
+export default class Default extends Vue {
+  private title = 'Gamification Startup Methoden';
+
+  private drawer = false;
+
+  get pageList (): Page[] {
+    return pages
+  }
 }
 </script>
+<style>
+.h-100{
+  height: 100%!important;
+}
+.w-100 {
+  width: 100%!important;
+}
+</style>
