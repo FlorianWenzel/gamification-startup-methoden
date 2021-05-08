@@ -65,7 +65,7 @@ import * as avataaars from '~/const/avataaars.const'
 
 @Component({})
 export default class Erstellen extends Vue {
-  private readonly imageBaseUrl = 'https://avataaars.io/?avatarStyle=Circle'
+  private imageBaseUrl = 'https://avataaars.io/?avatarStyle=Circle'
   get url () {
     const url = `${this.imageBaseUrl}&topType=${this.hair}&accessoriesType=${this.accessory}&hairColor=${this.hairColor}&facialHairType=${this.beard}&clotheType=${this.cloth}&clotheColor=${this.clothColor}&eyeType=${this.eyes}&eyebrowType=${this.eyebrow}&mouthType=${this.mouth}&skinColor=${this.skin}&facialHairColor=${this.hairColor}`
     if (process.browser) { window.localStorage.setItem('avatar', url) }
@@ -76,8 +76,9 @@ export default class Erstellen extends Vue {
     return avataaars
   }
 
-  private setValue (type: string, value: string) {
+  private setValue (type: keyof Erstellen, value: string) {
     if (process.browser) { window.localStorage.setItem(type, value) }
+    // @ts-ignore
     this[type] = value
   }
 
@@ -94,6 +95,6 @@ export default class Erstellen extends Vue {
 
   public name = (process.browser && window?.localStorage?.getItem('name')) || 'Mia'
   public age = (process.browser && window?.localStorage?.getItem('age')) || 24
-  public gender: 'male' | 'female' | 'other' = (process.browser && window?.localStorage?.getItem('gender')) || 'female'
+  public gender: 'male' | 'female' | 'other' = (process.browser && window?.localStorage?.getItem('gender') as 'male' | 'female' | 'other') || 'female'
 }
 </script>

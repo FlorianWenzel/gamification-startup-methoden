@@ -50,7 +50,7 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Eigenschaften extends Vue {
   private imgUrl = ''
   mounted () {
-    if (process.browser) { this.imgUrl = window.localStorage.getItem('avatar') }
+    if (process.browser) { this.imgUrl = window.localStorage.getItem('avatar') || '' }
   }
 
   public name = (process.browser && window?.localStorage?.getItem('name')) || ''
