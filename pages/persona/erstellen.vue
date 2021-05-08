@@ -76,7 +76,7 @@ export default class Erstellen extends Vue {
     return avataaars
   }
 
-  private setValue (type: keyof this, value: string) {
+  private setValue (type: string, value: string) {
     if (process.browser) { window.localStorage.setItem(type, value) }
     this[type] = value
   }
