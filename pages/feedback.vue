@@ -134,7 +134,7 @@ export default class Feedback extends Vue {
 
     this.loading = true
 
-    await fetch('http://localhost:3000/api/feedback', {
+    await fetch('/api/feedback', {
       method: 'POST',
       mode: 'cors',
       credentials: 'same-origin',
