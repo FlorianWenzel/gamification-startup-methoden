@@ -27,7 +27,7 @@
         </v-row>
       </v-col>
       <v-col>
-        <Slider :options="avatars.tops" name="Tops" :value-prop="hair" @setValue="value => hair = value" />
+        <Slider :options="avatars.tops" name="Frisur" :value-prop="hair" @setValue="(value) => setValue('hair', value)" />
         <Slider :options="avatars.accessories" name="Brille" :value-prop="accessory" @setValue="(value) => setValue('accessory', value)" />
         <Slider :options="avatars.hairColors" name="Haarfarbe" :value-prop="hairColor" @setValue="(value) => setValue('hairColor', value)" />
         <Slider :options="avatars.beards" name="Bart" :value-prop="beard" @setValue="(value) => setValue('beard', value)" />
@@ -50,7 +50,7 @@
       </NuxtLink>
       <NuxtLink to="/persona/eigenschaften" class="ml-auto">
         <v-btn color="primary">
-          So passts!
+          Fertig!
           <v-icon right>
             mdi-arrow-right
           </v-icon>

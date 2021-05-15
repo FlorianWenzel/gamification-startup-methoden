@@ -33,7 +33,7 @@
           Zurück
         </v-btn>
       </NuxtLink>
-      <v-btn color="primary" class="ml-auto" @click="todo">
+      <v-btn color="primary" class="ml-auto" @click="toFeedback">
         Fertig!
         <v-icon right>
           mdi-arrow-right
@@ -92,8 +92,8 @@ export default class Eigenschaften extends Vue {
     return ''
   }
 
-  todo () {
-    alert('Todo?')
+  toFeedback () {
+    this.$router.push({ path: '/feedback' })
   }
 }
 </script>

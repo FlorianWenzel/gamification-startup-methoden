@@ -8,7 +8,7 @@
         </v-card-title>
         <v-card-text>
           <p>
-            Zunächst ist nur das "Persona" Kaptiel freigeschaltet. Bald folgt mehr!
+            In dieser Testversion ist nur das "Persona" Kapitel freigeschaltet.
           </p>
         </v-card-text>
         <v-card-actions>

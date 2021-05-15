@@ -12,7 +12,10 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.3.5",
+    "@types/nodemailer": "^6.4.1",
+    "@vercel/node": "^1.10.0",
     "core-js": "^3.9.1",
+    "nodemailer": "^6.6.0",
     "nuxt": "^2.15.3",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2"

@@ -32,7 +32,7 @@ export default class LosGehts extends Vue {
   private height = 300 * (9 / 16);
 
   public mounted () {
-    this.width = window.innerWidth
+    this.width = window.innerWidth * 0.8
     this.height = this.width * (9 / 16)
   }
 }
