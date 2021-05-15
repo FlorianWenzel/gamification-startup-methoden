@@ -15,7 +15,7 @@ export const pages: Page[] = [{
   icon: 'mdi-lock',
   disabled: true,
   title: 'Business Model Canvas',
-  to: '/locked'
+  to: '/'
 },
 {
   icon: 'mdi-account',
@@ -42,5 +42,5 @@ export const pages: Page[] = [{
   icon: 'mdi-lock',
   disabled: true,
   title: 'Value Proposition Canvas',
-  to: '/locked'
+  to: '/'
 }]
