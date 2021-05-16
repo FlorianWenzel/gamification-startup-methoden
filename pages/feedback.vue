@@ -6,7 +6,7 @@
           Freut uns, das Sie unsere Testversion ausprobiert haben!
         </v-card-title>
         <v-card-text>
-          Bitte nehmen Sie sich noch eine Minute zeit und geben uns ein kurzes Feedback.
+          Bitte nehmen Sie sich noch eine Minute Zeit und geben uns ein kurzes Feedback.
           <br>Vielen Dank!
         </v-card-text>
         <v-card-actions>
@@ -77,7 +77,7 @@
             <v-textarea v-model="data.note" rows="5" auto-grow outlined />
 
             <h3>
-              Wie dürfen wir sie bei eventuell anfallenden Rückfragen kontaktieren? (optional)
+              Wie dürfen wir Sie bei eventuell anfallenden Rückfragen kontaktieren? (optional)
             </h3>
             <v-text-field v-model="data.mail" label="E-Mail / Telefonnummer" />
 
